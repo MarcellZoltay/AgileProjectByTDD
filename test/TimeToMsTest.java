@@ -1,9 +1,9 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Executable;
-import java.sql.Time;
-
+/**
+ * Tesztesetek a TimeToMs osztályhoz
+ */
 public class TimeToMsTest {
 
     @Test
