@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Calendar;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,9 +15,17 @@ class TestNotification {
     private Event e;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
+    private Calendar start;
+    private Calendar finish;
+    private Location loc;
+
     @BeforeEach
     public void setUp() {
-        Event e = new Event();
+
+        start = Calendar.getInstance();
+        finish = Calendar.getInstance();
+        loc = new Location("BME IQ", 47.472850, 19.059123);
+        Event e = new Event(start.getTime(), finish.getTime(), "Agilis", loc, 3);
         Date d = new Date();
         n = new Notification(d);
         n.setEvent(e);
@@ -41,7 +50,7 @@ class TestNotification {
 
         d = new Date();
         n = new Notification(d);
-        e = new Event();
+        e = new Event(start.getTime(), finish.getTime(), "Agilis", loc, 3);
         n.setEvent(e);
 
         n.execute();
@@ -63,7 +72,7 @@ class TestNotification {
 
         d = new Date();
         n = new Notification(d);
-        e = new Event();
+        e = new Event(start.getTime(), finish.getTime(), "Agilis", loc, 3);
         n.setEvent(e);
 
         System.out.println(n.toString());
